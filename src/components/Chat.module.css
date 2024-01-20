@@ -1,15 +1,13 @@
-
- 
-.Chat{
+.Chat {
   background-color: white;
   margin: 0;
-  color:black;
+  color: black;
   padding: 0;
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width:100%;
+  width: 100%;
   justify-content: center;
   margin: 0;
 }
@@ -59,14 +57,49 @@
 
 .selectedMessage {
   background-color: black;
-  color:white
+  color: white;
 }
-.eyes{
+.eyes {
   align-items: center;
   font-size: 12px;
   cursor: pointer;
 }
-.date{
-  color:grey;
-  font-size: 12px;;
+.date {
+  color: grey;
+  font-size: 12px;
+}
+
+.backButton {
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 16px;
+  color: #555;
+  cursor: pointer;
+  margin-left: 10px;
+  outline: none;
+}
+
+.Contacts {
+  background-color: white;
+  margin: 0;
+  color: black;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+}
+
+.searchInput {
+  display: flex;
+  flex-direction: row;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+.searchInput button {
+  margin-left: 15px;
 }

@@ -3,8 +3,9 @@ import { Wallet, ethers } from "ethers";
 import React, { useEffect, useState, useRef } from "react";
 import Chat from "./Chat";
 import styles from "./Home.module.css";
+import Contacts from "./Contacts";
 
-const PEER_ADDRESS = "0x7E0b0363404751346930AF92C80D1fef932Cc48a";
+const BOT_ADDRESS = "0x7E0b0363404751346930AF92C80D1fef932Cc48a";
 
 export default function Home() {
   const [messages, setMessages] = useState(null);
@@ -13,6 +14,7 @@ export default function Home() {
   const [signer, setSigner] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
   const [isOnNetwork, setIsOnNetwork] = useState(false);
+  const [showContactsList, setShowContactList] = useState(false);
 
   // Function to load the existing messages in a conversation
   const newConversation = async function (xmtp_client, addressTo) {
@@ -35,7 +37,7 @@ export default function Home() {
     // Create the XMTP client
     const xmtp = await Client.create(signer, { env: "production" });
     //Create or load conversation with Gm bot
-    newConversation(xmtp, PEER_ADDRESS);
+    newConversation(xmtp, BOT_ADDRESS);
     // Set the XMTP client in state for later use
     setIsOnNetwork(!!xmtp.address);
     //Set the client in the ref
@@ -104,12 +106,14 @@ export default function Home() {
         </div>
       )}
       {/* Render the Chat component if connected, initialized, and messages exist */}
-      {isConnected && isOnNetwork && messages && (
+      {isConnected && isOnNetwork && messages && !showContactsList ? (
         <Chat
           client={clientRef.current}
           conversation={convRef.current}
           messageHistory={messages}
         />
+      ) : (
+        <Contacts setShowContactList={setShowContactList} />
       )}
     </div>
   );
